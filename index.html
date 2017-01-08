@@ -1,4 +1,3 @@
-
 <html>
 <head>
 	<meta charset="utf-8">
@@ -11,58 +10,75 @@
 			src: url('font/Nanum.woff') format('woff');
 			src: url('fomt/Nanum.ttf') format('truetype');
 			}   
-		body,button,div,span{font-family:'Nanum';}
+		body,header,button,div,span{font-family:'Nanum';}
 	</style>
 	<title>NewsCrap</title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="/javascripts/scroll.js"></script>
- 
 </head>
 <body>
 	<style type="text/css"></style>
-<!--body bgcolor="#a18ab7"-->
-<div id="menu">
-<button	type="buttton">IT헤드라인</button>
-<button	type="buttton">모바일</button>
-<button	type="buttton">인터넷/SNS</button>
-<button	type="buttton">통신/뉴미디어</button>
-<button	type="buttton">IT일반</button>
-</div>
-<div style="display:scroll;position:fixed;top:5px;right:80px;">
-    <b>Send message</b><p>
-    Message  <input type="text" id="msgbox"/>
-    <br/><br/>
-YourName       <input type="text" id="namebox" name="namebox"/>
-</p>
-<!-- Top 버튼 -->
-<div style="display:scroll;position:fixed;top:5px;right:30px;">
-<a onclick="go_top();keepbottom(0);" title=Top><img src=http://bcnet.iptime.org/images/up.png ></a>
-</div>
-<!-- Top 버튼 -->
+	<header><h1>IT덕후들의 보물창고</h1></header>
+	<nav>
+		<ul>
+			<li><a href="http://naohan.iptimg.org">IT헤드라인</a></li>
+			<li><a href="http://naohan.iptimg.org">모바일</a></li>
+			<li><a href="http://naohan.iptimg.org">인터넷/SNS</a></li>
+			<li><a href="http://naohan.iptimg.org">통신/뉴미디어</a></li>
+			<li><a href="http://naohan.iptimg.org">IT일반</a></li>
+		</ul>
+	</nav>
+	<div id="menu">
+		<button	type="buttton">IT헤드라인</button>
+		<button	type="buttton">모바일</button>
+		<button	type="buttton">인터넷/SNS</button>
+		<button	type="buttton">통신/뉴미디어</button>
+		<button	type="buttton">IT일반</button>
+	</div>
+	<article>
+		<h2>IT헤드라인</h2>
+		<div>기사제목 1</div>
+		<div>기사제목 2</div>
+		<div>기사제목 3</div>
+		<div>기사제목 4</div>
+	</article>
+	<div style="display:scroll;position:fixed;top:5px;right:80px;">
+	    <b>Send message</b><p>
+	    Message  <input type="text" id="msgbox"/>
+	    <br/><br/>
+	YourName       <input type="text" id="namebox" name="namebox"/>
+	</p>
+
+	<!-- Top 버튼 -->
+	<div style="display:scroll;position:fixed;top:5px;right:30px;">
+	<a onclick="go_top();keepbottom(0);" title=Top><img src=http://bcnet.iptime.org/images/up.png ></a>
+	</div>
+
+	<!-- Top 버튼 -->
 	<!-- Bottom 버튼 -->
-<div style="display:scroll;position:fixed;top:50px;right:30px;">
-<a onclick="go_bottom();keepbottom(1);" title=Bottom><img src=http://bcnet.iptime.org/images/down.png ></a>
-</div>
-<!-- Bottom 버튼 -->
- </div>
+	<div style="display:scroll;position:fixed;top:50px;right:30px;">
+	<a onclick="go_bottom();keepbottom(1);" title=Bottom><img src=http://bcnet.iptime.org/images/down.png ></a>
+	</div>
+	<!-- Bottom 버튼 -->
+	 </div>
     <span id="msgs"></span>
     <script type="text/javascript">
-var keepbtm=Boolean(1);
-if(window.HTMLAudioElement){
-    var player = new Audio(''); 
-    function play(url){
-        if(player.paused || url != player.src){
-            if(player.canPlayType('audio/mp3')){
-                player.src = url;
-            }
-            player.play();
-        } else {
-            player.pause();
-            player.currentTime = 0; 
-        }
-    }
-}
+	var keepbtm=Boolean(1);
+	if(window.HTMLAudioElement){
+	    var player = new Audio(''); 
+	    function play(url){
+        	if(player.paused || url != player.src){
+	            if(player.canPlayType('audio/mp3')){
+	                player.src = url;
+	            }
+	            player.play();
+	        } else {
+	            player.pause();
+	            player.currentTime = 0; 
+	        }
+	    }
+	}
         var socket = io.connect('http://nayohan.iptime.org:20800');
         $("#msgbox").keyup(function(event) {
             if (event.which == 13) {
@@ -84,11 +100,8 @@ if(window.HTMLAudioElement){
 		play('./hyuk.mp3');
         });
     function keepbottom(num){
-keepbtm=Boolean(num);
-}
+	keepbtm=Boolean(num);
+	}
     </script>
-
-
-
 </body>
 </html>
