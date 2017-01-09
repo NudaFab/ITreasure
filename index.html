@@ -1,107 +1,185 @@
 <html>
-<head>
-	<meta charset="utf-8">
- 	<style>
-		@charset "utf-8";
-		@font-face{
-			font-family:'Nanum';
+    <style>
+    	@charset "utf-8";
+        @font-face{
+			font-family:'JejuMyeongjo';
 			font-style:normal;
-			src: url('font/Nanum.eot');
-			src: url('font/Nanum.woff') format('woff');
-			src: url('fomt/Nanum.ttf') format('truetype');
+			src: url('font/JejuMyeongjo.eot');
+			src: url('font/JejuMyeongjo.woff') format('woff');
+			/* url('fomt/JejuMyeongjo.ttf') format('truetype'); 이거는 로딩느려서 좀*/
 			}   
-		body,header,button,div,span{font-family:'Nanum';}
-	</style>
-	<title>NewsCrap</title>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="/javascripts/scroll.js"></script>
-</head>
-<body>
-	<style type="text/css"></style>
-	<header><h1>IT덕후들의 보물창고</h1></header>
-	<nav>
-		<ul>
-			<li><a href="http://naohan.iptimg.org">IT헤드라인</a></li>
-			<li><a href="http://naohan.iptimg.org">모바일</a></li>
-			<li><a href="http://naohan.iptimg.org">인터넷/SNS</a></li>
-			<li><a href="http://naohan.iptimg.org">통신/뉴미디어</a></li>
-			<li><a href="http://naohan.iptimg.org">IT일반</a></li>
+			body,head {font-family:'JejuMyeongjo';}
+			body{
+				margin: 0;	/*테두리마진*/
+			}
+			header{
+				background-color: #1E3660;
+				padding-top: 80px;
+				padding-bottom:60px;
+				/*border-bottom: 2px solid black;*/
+			}
+			header h1,header h3{
+				color: white;
+				text-align: center;
+				/*border: 2px solid red;*/
+			}
+			header h3{
+				margin-left: 200px;
+			}
+			ul.head_menu {
+				background-color: cornflowerblue;
+				list-style-type: none; /*앞동그라미*/
+				margin:0;
+				padding-left:200px;
+				overflow:hidden;
+				/*border: 2px solid rosybrown;*/
+			}
+			ul.head_menu li{
+				float: left; /*수평정렬*/
+			}
+			ul.head_menu li a{
+				display: block;
+				color: white;
+				text-align: center;
+				padding: 10px 14px;
+				text-decoration: none;
+			}
+			ul.head_menu li a:hover {
+    		background-color: #2e3062;
+			}
+			nav.nav_left{
+				float: left;
+				width: 200px;
+				min-height: 1000px;
+				/*padding-right: 20px;*/	
+				margin-right: 20px;
+				border: 2px solid #dddddd;
+			}
+			ul.years {
+				background-color: #f1f1f1;
+				list-style-type: none; /*앞동그라미*/
+			 	margin: 0;
+   				padding: 0;
+				overflow:hidden;
+				/*border: 2px solid rosybrown;*/
+			}
+			ul.years li{
+				/*border: 2px solid rosybrown;*/
+				margin:0px;
+				padding-left:15px;
+			}
+			ul.years li h2,ul.years li h3{
+				display: block;
+				color: #999999;
+				text-align: left;
+				padding: 10px 4px;
+				text-decoration: none;
+			}
+			ul.years li h3{
+				padding-left:5px;
+			}
+			ul.years li h3:hover {
+    		background-color: #2e3062;
+			}
+			nav.nav_right{
+				float: right;
+				width: 22%;
+				min-height: 1000px;	
+				padding-top: 20px;
+				padding-left: 3%;
+					
+				margin-left: 20px;
+				border: 2px solid #dddddd;
+			}
+			article{
+				margin-left: 200px;
+				margin-right: 25%;
+			}
+    </style>
+
+    <head>
+        <meta charset="utf-8">
+        <title>ITreasure</title>
+		<script src="/socket.io/socket.io.js"></script>
+    	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    	<script src="/javascripts/scroll.js"></script>
+    </head>
+
+    <body>
+        <header>
+		<h1>IT덕후들의 보물창고</h1>
+		<h3>ITreasure</h3>
+	    </header>
+		<ul class="head_menu">
+			    <li><a href="http://nayohan.iptime.org">IT헤드라인</a></h3>
+			    <li><a href="http://nayohan.iptime.org">모바일</a></li>
+			    <li><a href="http://nayohan.iptime.org">인터넷/SNS</a></li>
+			    <li><a href="http://nayohan.iptime.org">통신/뉴미디어</a></li>
+			    <li><a href="http://nayohan.iptime.org">IT일반</a></li>
 		</ul>
-	</nav>
-	<div id="menu">
-		<button	type="buttton">IT헤드라인</button>
-		<button	type="buttton">모바일</button>
-		<button	type="buttton">인터넷/SNS</button>
-		<button	type="buttton">통신/뉴미디어</button>
-		<button	type="buttton">IT일반</button>
-	</div>
-	<article>
-		<h2>IT헤드라인</h2>
-		<div>기사제목 1</div>
-		<div>기사제목 2</div>
-		<div>기사제목 3</div>
-		<div>기사제목 4</div>
-	</article>
-	<div style="display:scroll;position:fixed;top:5px;right:80px;">
-	    <b>Send message</b><p>
-	    Message  <input type="text" id="msgbox"/>
-	    <br/><br/>
-	YourName       <input type="text" id="namebox" name="namebox"/>
-	</p>
+        <nav class="nav_left">
+		    <ul class="years">
+			    <li><h2 href="http://nayohan.iptime.org">2017년</h2></h3>
+				<li><h3 href="http://nayohan.iptime.org">1월</h3></li>
+			    <li><h3 href="http://nayohan.iptime.org">2월</h3></li>
+			    <li><h3 href="http://nayohan.iptime.org">3월</h3></li>
+			    <li><h3 href="http://nayohan.iptime.org">4월</h3></li>
+		    </ul>
+	    </nav>
+		<nav class="nav_right" style="display:scroll;float: right">
+		    <b>채팅방</b><p>
+	    	메시지 <input type="text" id="msgbox"/>
+		    <br/><br/>
+			닉네임   <input type="text" id="namebox" name="namebox"/>
+			</p>
+			<span id="msgs"></span>
+		</nav>
+        <article>
+    		<h2>뉴스 모음</h2>
+		    <div>기사제목 1</div>
+			<div>기사제목 2</div>
+			<div>기사제목 3</div>
+			<div>기사제목 4</div>
+		</article>
 
-	<!-- Top 버튼 -->
-	<div style="display:scroll;position:fixed;top:5px;right:30px;">
-	<a onclick="go_top();keepbottom(0);" title=Top><img src=http://bcnet.iptime.org/images/up.png ></a>
-	</div>
-
-	<!-- Top 버튼 -->
-	<!-- Bottom 버튼 -->
-	<div style="display:scroll;position:fixed;top:50px;right:30px;">
-	<a onclick="go_bottom();keepbottom(1);" title=Bottom><img src=http://bcnet.iptime.org/images/down.png ></a>
-	</div>
-	<!-- Bottom 버튼 -->
-	 </div>
-    <span id="msgs"></span>
-    <script type="text/javascript">
-	var keepbtm=Boolean(1);
-	if(window.HTMLAudioElement){
-	    var player = new Audio(''); 
-	    function play(url){
-        	if(player.paused || url != player.src){
-	            if(player.canPlayType('audio/mp3')){
-	                player.src = url;
-	            }
-	            player.play();
-	        } else {
-	            player.pause();
-	            player.currentTime = 0; 
-	        }
-	    }
-	}
-        var socket = io.connect('http://nayohan.iptime.org:20800');
-        $("#msgbox").keyup(function(event) {
-            if (event.which == 13) {
-                socket.emit('fromclient',{msg:($('#namebox').val())+" : "+($('#msgbox').val())});
-            $('#msgs').append(($('#namebox').val())+" : "+($('#msgbox').val())+'<BR/>');
-                $('#msgbox').val('');
-		if(keepbtm){
-		go_bottom();
-		}
-            }
-        });
-        socket.on('toclient',function(data){
-            console.log(data.msg);
-            $('#msgs').append(data.msg+'<BR/>');
-		
-		if(keepbtm){
-		go_bottom();
-		}
-		play('./hyuk.mp3');
-        });
-    function keepbottom(num){
-	keepbtm=Boolean(num);
-	}
-    </script>
-</body>
+		<script type="text/javascript">
+			var keepbtm=Boolean(1);
+			if(window.HTMLAudioElement){
+				var player = new Audio(''); 
+				function play(url){
+					if(player.paused || url != player.src){
+						if(player.canPlayType('audio/mp3')){
+							player.src = url;
+						}
+						player.play();
+					} else {
+						player.pause();
+						player.currentTime = 0; 
+					}
+				}
+			}
+				var socket = io.connect('http://nayohan.iptime.org:20800');
+				$("#msgbox").keyup(function(event) {
+					if (event.which == 13) {
+						socket.emit('fromclient',{msg:($('#namebox').val())+" : "+($('#msgbox').val())});
+					$('#msgs').append(($('#namebox').val())+" : "+($('#msgbox').val())+'<BR/>');
+						$('#msgbox').val('');
+				if(keepbtm){
+				go_bottom();
+				}
+					}
+				});
+				socket.on('toclient',function(data){
+					console.log(data.msg);
+					$('#msgs').append(data.msg+'<BR/>');
+				if(keepbtm){
+				go_bottom();
+				}
+				play('./hyuk.mp3');
+				});
+			function keepbottom(num){
+			keepbtm=Boolean(num);
+			}
+		</script>
+    </body>    
 </html>
