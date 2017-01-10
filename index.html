@@ -9,13 +9,14 @@
 			/* url('fomt/JejuMyeongjo.ttf') format('truetype'); 이거는 로딩느려서 좀*/
 			}   
 			body,head {font-family:'JejuMyeongjo';}
-			body{
+			body{	
 				margin: 0;	/*테두리마진*/
+				padding: 0;
 				background-color: #e5e5e5;
 			}
 			header{
 				background-color: #1E3660;
-				padding-top: 80px;
+				padding-top: 60px;
 				padding-bottom:60px;
 				/*border-bottom: 2px solid black;*/
 			}
@@ -31,7 +32,7 @@
 				background-color: cornflowerblue;
 				list-style-type: none; /*앞동그라미*/
 				margin:0;
-				padding-left:200px;
+				padding-left:210px;
 				overflow:hidden;
 				/*border: 2px solid rosybrown;*/
 			}
@@ -42,7 +43,7 @@
 				display: block;
 				color: white;
 				text-align: center;
-				padding: 10px 14px;
+				padding: 15px 14px;
 				text-decoration: none;
 			}
 			ul.head_menu li a:hover {
@@ -52,8 +53,10 @@
 				float: left;
 				width: 200px;
 				min-height: 500px;
-				/*padding-right: 20px;*/
-				border: 10px solid #e5e5e5;
+
+				border-top: 10px solid #e5e5e5;
+				border-right: 10px solid #e5e5e5;
+				border-left: 10px solid #e5e5e5;
 
 			}
 			ul.years {
@@ -66,47 +69,80 @@
 			}
 			ul.years li{
 				/*border: 2px solid rosybrown;*/
-				margin:0px;
-				padding-left:15px;
+				margin:0;
 			}
-			ul.years li h2,ul.years li h3{
-				display: block;
+			ul.years li h3,ul.years li a{
+				display: block; 
 				color: black;
 				text-align: left;
+				text-decoration: none; /*밑줄제거*/
+				margin:0;
 				padding: 10px 4px;
-				text-decoration: none;
 			}
 			ul.years li h3{
-				padding-left:5px;
+				background: #2e3062; 
+				color: white;
+				margin:0;
+				padding-left:15px;
 			}
-			ul.years li h3:hover {
-    		background-color: #2e3062;
+			ul.years li a{
+				padding: 8px 0px;
+				padding-left:20px;
+				font-size: 12pt;
+			}
+			ul.years li a:hover {
+    			background-color: #2e3062;
+				color: white;
 			}
 			aside.chatbox{
 				background-color: white;
 				float: right;
-				width: 19%;
-				min-height: 500px;	
-				margin-left: 210px + 75%; /*20+20*/
+				width: 21%;
+				min-height: 400px;	
+				margin-right:0;
 				padding-top: 20px;
-				padding-left: 3%;
-				padding-right: 3%;
-			
+				padding-left: 10px;
+				padding-right: 10px;
+				
 				border-bottom: 10px solid #e5e5e5;
 				border-right: 10px solid #e5e5e5;
 				border-top: 10px solid #e5e5e5;
 			}
 			div#msgs{
-				border: 2px solid #dddddd;
-				background-color: #dddddd;
+				border: 3px solid #9a9a9a;
+				background-color: white;
+				margin-top: 10px;
+				min-height: 300px;
+				max-height: 300px;
 			}
-			aside.chatbox input{
-				color: blue;
+			aside.chatbox input#namebox{
+				width: 25%;
+				border-width: 3px;
+			}
+			aside.chatbox input#msgbox{
+				width: 70%;
+				border-width: 3px;
+			}
+			ul.weather{
+				list-style-type: none;
+				margin:0;
+				padding:0;
+				padding-left:10px;
+				padding-top:5px;
+				padding-bottom:5px;
+			}
+			ul.weather li{
+				margin:0;
+			}
+			ul.weather li div{
+				display: block; 
+				color: black;
+				text-decoration: none; /*밑줄제거*/
 			}
 			article{
 				background-color: white;
 				margin-left: 210px; /*200px 왼쪽nav 20px는 공백*/
-				margin-right: 26%;
+				margin-right: 24%;
 				padding-left:25px;
 				padding-right:25px;
 				padding-bottom:25px;
@@ -118,13 +154,11 @@
 			footer{
 				background-color: #1E3660;
 				padding: 0;
-				/*border-bottom: 2px solid black;*/
 			}
 			footer p{
-				margin-bottom: 0;
+				margin: 0;
 				padding: 10px;
-				padding-left: 40px;
-				color: white;
+				color: slategray;
 				font-size: 10pt;
 			}
     </style>
@@ -138,10 +172,14 @@
     </head>
 
     <body>
+				<footer>
+			<p>Designed by NudaFab, Programmed by CLP</p>
+		</footer>  
         <header>
 		<h1>뉴스크랩 보물창고</h1>
 		<h3>ITreasure</h3>
 	    </header>
+
 		<ul class="head_menu">
 			    <li><a href="http://nayohan.iptime.org">IT헤드라인</a></h3>
 			    <li><a href="http://nayohan.iptime.org">모바일</a></li>
@@ -151,40 +189,78 @@
 		</ul>
         <aside class="years">
 		    <ul class="years">
-			    <li><h2 href="http://nayohan.iptime.org">2017년</h2></h3>
-				<li><h3 href="http://nayohan.iptime.org">1월</h3></li>
-			    <li><h3 href="http://nayohan.iptime.org">2월</h3></li>
-			    <li><h3 href="http://nayohan.iptime.org">3월</h3></li>
-			    <li><h3 href="http://nayohan.iptime.org">4월</h3></li>
+			    <li><h3 href="http://nayohan.iptime.org">2017년</h3></li>
+				<li><a href="http://nayohan.iptime.org">1월</a></li>
+			    <li><a href="http://nayohan.iptime.org">2월</a></li>
+			    <li><a href="http://nayohan.iptime.org">3월</a></li>
+			    <li><a href="http://nayohan.iptime.org">4월</a></li>
+				<li><a href="http://nayohan.iptime.org">5월</a></li>
+				<li><a href="http://nayohan.iptime.org">6월</a></li>
+				<li><a href="http://nayohan.iptime.org">7월</a></li>
+				<li><a href="http://nayohan.iptime.org">8월</a></li>
+				<li><a href="http://nayohan.iptime.org">9월</a></li>
+				<li><a href="http://nayohan.iptime.org">10월</a></li>
+				<li><a href="http://nayohan.iptime.org">11월</a></li>
+				<li><a href="http://nayohan.iptime.org">12월</a></li>
+			</ul>
+			<br>
+			<ul class="years">
+				<li><h3 href="http://nayohan.iptime.org">2018년</h3></li>
+				<li><a href="http://nayohan.iptime.org">1월</a></li>
+			    <li><a href="http://nayohan.iptime.org">2월</a></li>
+			    <li><a href="http://nayohan.iptime.org">3월</a></li>
+			    <li><a href="http://nayohan.iptime.org">4월</a></li>
+				<li><a href="http://nayohan.iptime.org">5월</a></li>
+				<li><a href="http://nayohan.iptime.org">6월</a></li>
+				<li><a href="http://nayohan.iptime.org">7월</a></li>
+				<li><a href="http://nayohan.iptime.org">8월</a></li>
+				<li><a href="http://nayohan.iptime.org">9월</a></li>
+				<li><a href="http://nayohan.iptime.org">10월</a></li>
+				<li><a href="http://nayohan.iptime.org">11월</a></li>
+				<li><a href="http://nayohan.iptime.org">12월</a></li>
 		    </ul>
 	    </aside>
 		<aside class="chatbox" style="display:scroll;float: right">
 			<b>채팅방</b>
-			<div id="msgs"><li><h2 href="http://nayohan.iptime.org">2017년</h2></h3></div>
+			<div id="msgs"></div>
 			<p>
-			<input type="text" id="namebox" name="namebox" placeholder="닉네임"/>
-			<input type="text" id="msgbox" placeholder="입력하세요"/>
+			<input type="text" id="namebox" name="namebox" placeholder="닉네임" maxlength="10"/>
+			<input type="text" id="msgbox" placeholder="입력하세요" maxlength="50"/>
 			</p>
+
+		<!--<hr style="background-color:#e5e5e5; width:200px; height:10px; padding:0; margin:0"> 
+			<b>날씨</b>
+			<ul class="weather">
+				<li><div>서울:맑음 기온:-8℃ 강수확률:0%</div></li>
+			    <li><div>인천</div></li>
+			    <li><div>수원</div></li>
+			    <li><div>대전</div></li>
+				<li><div>청주</div></li>
+				<li><div>강릉</div></li>
+				<li><div>춘천</div></li>
+				<li><div>광주</div></li>
+				<li><div>전주</div></li>
+				<li><div>부산</div></li>
+				<li><div>대구</div></li>
+				<li><div>제주</div></li>
+		    </ul>-->
 		</aside>
-		<section>
 			<article>
 				<h2> Made By CLP & NudaFab</h2>
-				<p>안녕하신가! 여기는 뉴스들을 군인정신으로 저장하고있는 빅데이터 보물창고라네!</p>
+				<p>안녕하신가! <br>여기는 뉴스들을 군인정신으로 저장하고있는 빅데이터 보물창고라네!</p>
 			</article>
-			<article>
-				<h2>HTML이란 무엇인가?</h2>
-				<p>"Hyper Text Mark-up Language" 의 약자. 웹 페이지의 모습을 기술하기 위한 규약. 프로그래밍 언어가 아니라 마크업 언어[1]다. 헷갈리지 않도록 하자. 웹사이트에서 흔히 볼 수 있는 htm 이나 html 확장자가 바로 이 언어로 작성된 문서이다.</p>
-				<p>최초 제안자는 당시 CERN에서 계약직으로 착취당하던 공돌이 연구중이던 물리학자 티머시 J. 버너스리 경(Timothy John Berners-Lee OM, KBE, 1955년 6월 8일 ~ ) [2] 지금 이 문서을 보고 있는 독자가 이렇게 편하게 인터넷으로 위키를 하고 있게 된 것도 다 이 양반이 대인배스럽게 HTML에 대한 특허를 내지 않았기 때문이다. 못 믿겠으면, 지금 마우스 오른쪽을 클릭하고 "소스 보기" 메뉴를 선택해보자. URL, HTTP, WWW의 전신인 Enquire 등도 이 양반이 세트로 개발하고 제안했다. TCP/IP 통신규약을 만든 빈턴 G. 서프(Vinton Gray Cerf)와 함께 인터넷의 아버지로 불리운다</P>
-			</article>
-			<article>
-				<h2>CSS를 알아보자</h2>
-				<p>CSS 또는 캐스케이딩 스타일 시트(Cascading Style Sheet)는 마크업 언어가 실제 표시되는 방법을 기술하는 언어로, HTML과 XHTML에 주로 쓰이며, XML에서도 사용할 수 있다. W3C의 표준이며, 레이아웃과 스타일을 정의할 때의 자유도가 높다.</P>
-				<p>...라고 한국어 위키백과에 소개되어 있으나 일반인이 저 말을 보기엔 이해하기 어려울 수도 있을 것이다.</P>
-			</article>
-		</section>
-		<footer>
-			<p>Powered by ITreasure, designed by NudaFab, programmed by CLP</p>
-		</footer>
+		<article>
+			<h2>HTML이란 무엇인가?</h2>
+			<p>"Hyper Text Mark-up Language" 의 약자. 웹 페이지의 모습을 기술하기 위한 규약. 프로그래밍 언어가 아니라 마크업 언어[1]다. 헷갈리지 않도록 하자. 웹사이트에서 흔히 볼 수 있는 htm 이나 html 확장자가 바로 이 언어로 작성된 문서이다.</p>
+			<p>최초 제안자는 당시 CERN에서 계약직으로 착취당하던 공돌이 연구중이던 물리학자 티머시 J. 버너스리 경(Timothy John Berners-Lee OM, KBE, 1955년 6월 8일 ~ ) [2] 지금 이 문서을 보고 있는 독자가 이렇게 편하게 인터넷으로 위키를 하고 있게 된 것도 다 이 양반이 대인배스럽게 HTML에 대한 특허를 내지 않았기 때문이다. 못 믿겠으면, 지금 마우스 오른쪽을 클릭하고 "소스 보기" 메뉴를 선택해보자. URL, HTTP, WWW의 전신인 Enquire 등도 이 양반이 세트로 개발하고 제안했다. TCP/IP 통신규약을 만든 빈턴 G. 서프(Vinton Gray Cerf)와 함께 인터넷의 아버지로 불리운다</P>
+		</article>
+		<article>
+			<h2>CSS를 알아보자</h2>
+			<p>CSS 또는 캐스케이딩 스타일 시트(Cascading Style Sheet)는 마크업 언어가 실제 표시되는 방법을 기술하는 언어로, HTML과 XHTML에 주로 쓰이며, XML에서도 사용할 수 있다. W3C의 표준이며, 레이아웃과 스타일을 정의할 때의 자유도가 높다.</P>
+			<p>...라고 한국어 위키백과에 소개되어 있으나 일반인이 저 말을 보기엔 이해하기 어려울 수도 있을 것이다.</P>
+		</article>
+
+	
 		<script type="text/javascript">
 			var keepbtm=Boolean(1);
 			if(window.HTMLAudioElement){
@@ -224,5 +300,6 @@
 			keepbtm=Boolean(num);
 			}
 		</script>
-    </body>    
+    </body> 
+ 
 </html>
